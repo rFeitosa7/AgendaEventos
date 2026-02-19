@@ -1,0 +1,16 @@
+﻿bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+appsettings.Development.json
+*.log
+.DS_Store
+Thumbs.db
+publish/
+*.nupkg
+packages/
+.dotnet/

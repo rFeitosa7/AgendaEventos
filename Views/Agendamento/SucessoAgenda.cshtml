@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = " Finalização Agendamento - ";
+}
+
+<h1 class="text-center" style="font-weight: bold"> Seguir com o Pagamento </h1>
+
+@if (TempData["SucecessAgendamento"] != null)
+{
+<div class="alert alert-success">
+    @TempData["SucecessAgendamento"]
+    <button type="button" class="btn-close botao-X" data-bs-dismiss="alert"></button>
+</div>
+}
+
+@if (TempData["MensagemURL"] != null)
+{
+<a href="https://wa.me/5569992955498?text=@TempData["MensagemURL"]" target="_blank">Clique aqui para seguir com o pagamento (Via Whatsapp) </a>
+}
+

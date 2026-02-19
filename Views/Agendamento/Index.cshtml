@@ -1,0 +1,105 @@
+﻿@using Agendamento_de_Eventos.Enums
+@using Agendamento_de_Eventos.ViewModel
+@model AgendamentoViewModel
+@{
+    ViewData["Title"] = "Agendamento - ";
+}
+
+<h1 class=" h1-view-agendamento text-center mb-4">Agende Seu Evento</h1>
+
+@if (TempData["ErroDataModel"] != null)
+{
+    <div class="alert alert-danger" style="margin: 0 5px 10px 5px;">
+        @TempData["ErroDataModel"]
+        <button type="button" class="btn-close botao-X" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["ErroDataInvalida"] != null)
+{
+    <div class="alert alert-danger" style="margin: 0 5px 10px 5px;">
+        @TempData["ErroDataInvalida"]
+        <button type="button" class="btn-close botao-X" data-bs-dismiss="alert"></button>
+    </div>
+}
+@if (TempData["dataReservada"] != null)
+{
+    <div class="alert alert-danger" style="margin: 0 5px 10px 5px;">
+        @TempData["dataReservada"]
+        <button type="button" class="btn-close botao-X" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="espaco-form">
+<form asp-controller="Agendamento" asp-action="AddEvento" method="post">
+
+    <div class="mb-3">
+        <label for="Nome" class="form-label">Digite Seu nome : </label>
+        <input asp-for="Nome" type="text" class="form-control">
+        <span class="texto-validacao">@Html.ValidationMessageFor(x => x.Nome)</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="DiaEvento" class="form-label">Selecione a data do evento : </label>
+        <input asp-for="DataMarcada" type="date" placeholder="Escolha a data do Evento" class="form-control">
+        <span class="texto-validacao">@Html.ValidationMessageFor(x => x.DataMarcada)</span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TipoEvento" class="form-label"> Escolha o Evento : </label>
+        <select asp-for="TipoEvento" class="form-select">
+            <option value="">Selecione o tipo de Evento </option>
+            <option value="@TipoEvento.Aniversario">Aniversário</option>
+            <option value="@TipoEvento.Casamento">Casamento</option>
+            <option value="@TipoEvento.EventoSocial">Evento Social</option>
+            <option value="@TipoEvento.EventoCorporativo">Evento Corporativo</option>
+            <option value="@TipoEvento.EventoReligioso">Evento Religioso</option>
+            <option value="@TipoEvento.JantarRecepcao">Jantar e Recepção</option>
+            <option value="@TipoEvento.ApresentacaoCultural">Apresentação Cultural</option>
+            <option value="@TipoEvento.ApresentacaoInstitucional">Apresentação Institucional</option>
+            <option value="@TipoEvento.Outro">Outro</option>
+        </select>
+        </label>
+        <span class="texto-validacao">@Html.ValidationMessageFor(x => x.TipoEvento)</span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DuracaoEvento" class="form-label">Escolha a Duração do Evento </label>
+        <select asp-for="DuracaoEvento" class="form-select">
+            <option value="">Selecione aproximadamente a Duração do Evento </option>
+            <option value="@DuracaoEvento.UmaHora">1 Hora - R$ 250,00</option>
+            <option value="@DuracaoEvento.DuasHora">2 Horas - R$ 400,00</option>
+            <option value="@DuracaoEvento.TresHora">3 Horas - R$ 600,00</option>
+            <option value="@DuracaoEvento.QuatroHora">4 Horas - R$ 800,00</option>
+        </select>
+        </label>
+        <span class="texto-validacao">@Html.ValidationMessageFor(x => x.DuracaoEvento)</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="InicioEvento" class="form-label">Digite o horário de inicio do evento : </label>
+        <input asp-for="Horainicio" type="time" class="form-control">
+        <span class="texto-validacao">@Html.ValidationMessageFor(x => x.Horainicio)</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="LocalizacaoEvento" class="form-label">Digite a Localização do Evento : </label>
+        <input asp-for="Localizacao" type="text" class="form-control">
+        <span class="texto-validacao">@Html.ValidationMessageFor(x => x.Localizacao)</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="NumeroCelular" class="form-label">Digite seu número (Whatsapp) : </label>
+        <input asp-for="NumeroCelular" type="text" class="form-control" placeholder="Ex: (xx) xxxxx-xxxx">
+        <span class="texto-validacao">@Html.ValidationMessageFor(x => x.NumeroCelular)</span>
+    </div>
+    <div class="mb-3">
+        <label for="InformacaoEvento" class="form-label">Observações</label>
+        <input asp-for="InfoEvento" type="text" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-4" style="padding: 15px; border-radius: 65px;">Enviar</button>
+    <br />
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mb-4" style="padding: 15px; border-radius: 65px;">Voltar à página inicial</a>
+</form>
+</div>

@@ -1,0 +1,32 @@
+﻿@using Agendamento_de_Eventos.ViewModel
+@model LoginAdmViewModel
+@{
+    ViewData["Title"] = "Página Inicial - ";
+}
+
+@if (TempData["ErrorLoginAdm"] != null)
+{
+    <div class="alert alert-danger" style="margin: 25px 5px 10px 5px;">
+        @TempData["ErrorLoginAdm"]
+        <button type="button" class="btn-close botao-X" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div style="margin: 0 10px 0 10px;">
+<form asp-controller="Adm" asp-action="Login" method="post">
+    <div class=" mt-3 mb-3">
+        <label for="Usuario" class="form-label">Usuário</label>
+        <input asp-for="usuario" type="text" class="form-control">
+        <span class="texto-validacao">@Html.ValidationMessageFor(x => x.usuario)</span>
+    </div>
+    <div class="mb-3">
+        <label for="Senha" class="form-label">Senha</label>
+        <input asp-for="senha" type="password" class="form-control">
+        <span class="texto-validacao">@Html.ValidationMessageFor(x => x.senha)</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-4" style="padding: 13px; border-radius: 31px;">Entrar</button>
+    <br />
+    <a asp-controller="Home" asp-action="Index" class=" btn btn-secondary mb-4" style="padding: 13px; border-radius: 31px;">Voltar à página inicial</a>
+</form>
+</div>

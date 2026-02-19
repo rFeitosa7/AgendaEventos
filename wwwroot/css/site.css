@@ -1,0 +1,520 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+
+footer.border-top.footer.text-muted.fixed-bottom {
+    padding: 5px 0 3px 0;
+    text-align: center;
+}
+
+.image-pagina-inicial {
+    background-image: url('/FotosVideos/Fotos/Imagem foto olhando para o lado.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+}
+
+    .image-pagina-inicial::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 500px;
+        background: linear-gradient( to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 60%, #0A0A0A 100% );
+        pointer-events: none;
+    }
+
+.img-tipos-musicas {
+    background-image: url('/FotosVideos/Fotos/eng-hs-BTZ-nQrv1IU-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 65vh;
+    background-attachment: fixed;
+    margin-top: 3rem;
+}
+
+.img-fundo-casamento {
+    background-image: url('/FotosVideos/Fotos/foto-pettine-IfjHaIoAoqE-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+    margin-top: 3rem;
+}
+
+.img-lista-eventos {
+    background-image: url('/FotosVideos/Fotos/guney-akin-paPMR3RT-rs-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    background-attachment: fixed;
+    margin-top: 3rem;
+}
+
+.img-grupo-casamento  {
+    background-image: url('/FotosVideos/Fotos/foto grupo 2.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+}
+
+    .img-grupo-casamento::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        background: linear-gradient( to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 60%, #0A0A0A 100% );
+        pointer-events: none;
+    }
+
+.icone-topo i {
+    font-size: 1.8rem;
+    color: #1C1C1C;
+    background-color: #D4AF37;
+    padding: 1rem;
+    border-radius: 50%;
+    margin: 20px 0 20px 0;
+}
+
+.horas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.hora-card {
+    background-color: #262626;
+    border-radius: 0.75rem;
+    padding: 1.2rem;
+    text-align: center;
+    color: #EFE1C6;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    margin: 0 10px 0 10px;
+}
+
+    .hora-card .tempo {
+        display: block;
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    .hora-card .valor {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #EFE1C6;
+    }
+
+.espaco-form {
+    margin: 0 10px 0 10px;
+}
+
+.button-pagina-inicial {
+    margin: 30px 0 0 0;
+}
+
+.select-pagina-agendamento {
+    margin: 25px 0 25px 0;
+    padding: 10px;
+}
+
+.table-agendas {
+    width: 100%;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.button-paineladm-index {
+    margin-left: auto;
+    padding: 6px;
+    border-radius: 20px;
+}
+
+.botao-X {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+
+
+/*Coloração*/
+body {
+    background-color: #1C1C1C;
+}
+
+h1 {
+    color: #EFE1C6;
+    font-family: 'Unna';
+    font-weight: bold;
+    font-size: 6rem;
+    letter-spacing: 1px;
+    position: relative;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    top: 30%;
+}
+.h1-grupo-casamento {
+    color: #EFE1C6;
+    font-family: 'Unna';
+    font-weight: bold;
+    font-size: 4rem;
+    letter-spacing: 1px;
+    position: relative;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    top: 64%;
+}
+
+.h1-view-agendamento {
+    color: #EFE1C6;
+    font-family: 'Unna';
+    font-weight: bold;
+    font-size: 4rem;
+    letter-spacing: 1px;
+    position: relative;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    top: 30%;
+}
+
+.img-h2 {
+    color: #EFE1C6;
+    font-size: 2.6rem;
+    font-family: 'Unna';
+    text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    position: relative;
+    top: 29%;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #D6B58A;
+    font-family: 'Unna';
+    font-size: 2.7rem;
+}
+
+.p-apresentacao-index {
+    font-family: Lato, sans-serif;
+    font-size: 1.25rem;
+    text-align: left;
+    color: #EDEDED;
+    padding: 12px;
+    line-height: 1.625;
+    text-indent: initial;
+}
+
+.lista-musicas {
+    padding: 10px;
+    background-color: #262626;
+    color: #EDEDED;
+    border-radius: 1rem;
+    margin: 0 20px 0 20px;
+    font-size: 1.25rem;
+}
+.lista-eventos {
+    padding: 10px;
+    background-color: #262626;
+    color: #EDEDED;
+    border-radius: 1rem;
+    margin: 0 20px 0 20px;
+    font-size: 1.35rem;
+}
+
+.texto-validacao {
+    color: #DC3545;
+}
+
+.footer-site {
+    background-color: #151515;
+    color: #A0A0A0;
+    border-top: 1px solid #2F2F2F;
+    padding: 2rem 0;
+}
+
+    .footer-site small {
+        color: #6F6F6F;
+    }
+
+/*Formulario*/
+.form-control,
+.form-select {
+    background-color: #1C1C1C;
+    border: 1px solid #3A3A3A;
+    color: #FFFFFF;
+    color-scheme: dark;
+}
+
+    .form-control::placeholder {
+        color: #8A8A8A;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        background-color: #1C1C1C;
+        border-color: #C08A4D;
+        box-shadow: 0 0 0 0.15rem rgba(192, 138, 77, 0.35);
+        color: #FFFFFF;
+    }
+
+.form-label {
+    color: #D6B58A;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #C08A4D;
+    border-color: #C08A4D;
+    color: #1C1C1C;
+}
+
+    .btn-primary:hover {
+        background-color: #8B5E3C;
+        border-color: #8B5E3C;
+    }
+
+/*Remover azul padrão bootstrap*/
+button,
+.btn,
+a,
+button[type="submit"],
+button[type="button"] {
+    outline: none !important;
+}
+
+    button:focus,
+    button:active,
+    button:focus-visible,
+    .btn:focus,
+    .btn:active,
+    .btn:focus-visible,
+    a:focus,
+    a:active,
+    a:focus-visible,
+    button[type="submit"]:focus,
+    button[type="button"]:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #8B5E3C;
+    border-color: #8B5E3C;
+    box-shadow: 0 0 0 0.15rem rgba(192, 138, 77, 0.45) !important;
+}
+
+.btn-secondary {
+    background-color: #2F2F2F;
+    border-color: #3A3A3A;
+    color: #FFFFFF;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #C08A4D;
+    box-shadow: 0 0 0 0.2rem rgba(192, 138, 77, 0.35) !important;
+}
+
+/*Navbar*/
+
+.custom-navbar {
+    background-color: #1C1C1C;
+    border-bottom: 1px solid #2F2F2F;
+}
+
+    .custom-navbar .navbar-brand {
+        color: #C08A4D;
+    }
+
+        .custom-navbar .navbar-brand:hover {
+            color: #D6B58A;
+        }
+
+    .custom-navbar .nav-link {
+        color: #E0E0E0;
+        font-weight: 500;
+    }
+
+        .custom-navbar .nav-link:hover,
+        .custom-navbar .nav-link.active {
+            color: #C08A4D;
+        }
+
+    .custom-navbar .btn-primary {
+        background-color: #C08A4D;
+        border-color: #C08A4D;
+        color: #1C1C1C;
+    }
+
+        .custom-navbar .btn-primary:hover {
+            background-color: #8B5E3C;
+            border-color: #8B5E3C;
+        }
+
+    .custom-navbar .navbar-toggler {
+        border-color: #3A3A3A;
+    }
+
+    .custom-navbar .navbar-toggler-icon {
+        filter: invert(1);
+    }
+
+/* Listas*/
+
+.list-group-item {
+    background-color: #2F2F2F;
+    color: #E0E0E0;
+    border: 1px solid #3A3A3A;
+}
+
+    .list-group-item:hover {
+        background-color: #1C1C1C;
+        color: #FFFFFF;
+    }
+
+    .list-group-item.active {
+        background-color: #C08A4D !important;
+        border-color: #C08A4D !important;
+        color: #1C1C1C !important;
+    }
+
+    .list-group-item:focus,
+    .list-group-item:active,
+    .list-group-item:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+.list-group {
+    background-color: transparent;
+}
+
+/*Table DataTable*/
+
+label {
+    color: #E0E0E0;
+}
+
+.dataTables_wrapper {
+    color: #FFFFFF;
+}
+
+table.dataTable {
+    background-color: #2B2B2B;
+    border: 1px solid #3A3A3A;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+    table.dataTable thead th {
+        background-color: #1F1F1F;
+        color: #C08A4D;
+        border-bottom: 1px solid #3A3A3A;
+        text-align: center;
+    }
+
+    table.dataTable tbody td {
+        background-color: #2B2B2B;
+        color: #E0E0E0;
+        border-top: 1px solid #3A3A3A;
+        vertical-align: middle;
+    }
+
+    table.dataTable tbody tr:hover td {
+        background-color: #343434;
+    }
+
+    table.dataTable tbody tr.selected td {
+        background-color: #3A2E1F;
+    }
+
+.dataTable_filter input,
+.dataTable_filter input {
+    background-color: #1F1F1F;
+    color: #E0E0E0;
+    border: 1px solid #3A3A3A;
+    border-radius: 4px;
+}
+
+    .dataTable_filter input:focus {
+        outline: none;
+        border-color: #C08A4D;
+    }
+
+.dataTable_length select,
+.dataTable_length label {
+    background-color: #1F1F1F;
+    color: #E0E0E0;
+    border: 1px solid #3A3A3A;
+    border-radius: 4px;
+}
+
+.dataTable_paginate .paginate_button:hover {
+    background-color: #C08A4D !important;
+    color: #1F1F1F !important;
+    border-color: #C08A4D !important;
+}
+
+.dataTable_paginate .paginate_button.current {
+    background-color: #C08A4D !important;
+    color: #1F1F1F !important;
+    border-color: #C08A4D !important;
+}
+
+.dataTable_info {
+    color: #B0B0B0;
+}
+
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:after {
+    color: #C08A4D;
+}
+
+#table-agendas_info.dt-info {
+    color: #E0E0E0;
+}
+
+.dt-layout-row {
+    color: #E0E0E0 !important;
+}

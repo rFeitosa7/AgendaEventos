@@ -1,0 +1,91 @@
+﻿@using Agendamento_de_Eventos.Enums;
+@model List<AgendamentoModel>
+@{
+    ViewData["Title"] = "Painel Administrativo - ";
+}
+
+<h1 class="text-center h1-grupo-casamento">Painel Administrativo</h1>
+
+@if (TempData["AgendaNull"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["AgendaNull"]
+        <button type="button" class="btn-close botao-X" data-bs-dismiss="alert"></button>
+    </div>
+}
+@if (TempData["SucessAgendaStatus"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SucessAgendaStatus"]
+        <button type="button" class="btn-close botao-X" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<!-- converter o Viewbag para Dictionary -->
+@{
+    var duracaoEvento = (Dictionary<DuracaoEvento, string>)ViewBag.NewNameDuracao;
+    var tipoEvento = (Dictionary<TipoEvento, string>)ViewBag.NewNameTipoEvento;
+}
+
+
+<div style="margin: 0 10px 0 10px;">
+<div class="table-responsive">
+    <table class="display nowrap table table-striped table-agendas" id="table-agendas">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Data</th>
+                <th scope="col">Duração</th>
+                <th scope="col">Horário de início</th>
+                <th scope="col">Tipo de Evento</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Localização</th>
+                <th scope="col">Observações</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @if (Model != null && Model.Any())
+            {
+                @foreach (AgendamentoModel agendamentoModel in Model)
+                {
+                    <tr>
+                        <td>@agendamentoModel.Nome</td>
+                        <td>@agendamentoModel.DataEvento.ToString("dd/MM/yyyy")</td>
+                        <td>@duracaoEvento[agendamentoModel.Duracao]</td>
+                        <td>@agendamentoModel.Horainicio</td>
+                        <td>@tipoEvento[agendamentoModel.TipoEvento]</td>
+                        <td>@agendamentoModel.NumeroCelular</td>
+                        <td>@agendamentoModel.Localizacao</td>
+                        <td>@agendamentoModel.InfoEvento</td>
+                        <td>
+                            <form asp-controller="Adm" asp-action="AtualizarStatus" method="post" class="d-flex justify-content-center gap-2">
+
+                                <input type="hidden" name="id" value="@agendamentoModel.Id" />
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="StatusEvento" value="1" @(agendamentoModel.Status == StatusEvento.Concluido ? "checked" : "") />
+                                    <label class="form-check-label">Concluído</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="StatusEvento" value="2" @(agendamentoModel.Status == StatusEvento.Pendente ? "checked" : "") />
+                                    <label class="form-check-label">Pendente</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="StatusEvento" value="3" @(agendamentoModel.Status == StatusEvento.Cancelado ? "checked" : "") />
+                                    <label class="form-check-label">Cancelado</label>
+                                </div>
+
+                                <button class="btn btn-sm btn-success" type="submit">Salvar</button>
+
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+</div>
