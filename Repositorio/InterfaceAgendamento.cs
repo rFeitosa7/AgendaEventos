@@ -1,16 +1,17 @@
 ﻿using Agendamento_de_Eventos.Models;
-using Agendamento_de_Eventos.ViewModel;
 
 namespace Agendamento_de_Eventos.Repositorio
 {
     public interface InterfaceAgendamento
     {
-        AgendamentoModel AddBanco(AgendamentoModel Addmodel);
+        Task<AgendamentoModel> AddBanco(AgendamentoModel Addmodel);
 
-        List<AgendamentoModel> BuscarAgendas();
+        Task<List<AgendamentoModel>> BuscarAgendas();
 
-        AgendamentoModel BuscarId(int Id);
+        Task<AgendamentoModel> BuscarId(int Id);
 
-        AgendamentoModel Atualizar(AgendamentoModel updateModel);
+        Task<AgendamentoModel> Atualizar(AgendamentoModel updateModel);
+
+        Task<AgendamentoModel> BuscarAgendaCheia(DateTime dataCheia);
     }
 }

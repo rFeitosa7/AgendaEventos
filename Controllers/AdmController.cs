@@ -1,11 +1,8 @@
-﻿using Agendamento_de_Eventos.Data;
-using Agendamento_de_Eventos.Enums;
+﻿using Agendamento_de_Eventos.Enums;
 using Agendamento_de_Eventos.Filters;
 using Agendamento_de_Eventos.Helpers;
-using Agendamento_de_Eventos.Models;
-using Agendamento_de_Eventos.Repositorio;
+using Agendamento_de_Eventos.Service.Interface;
 using Agendamento_de_Eventos.ViewModel;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -13,25 +10,23 @@ namespace Agendamento_de_Eventos.Controllers
 {
     public class AdmController : Controller
     {
-        private readonly InterfaceAgendamento _interfaceAgendamento;
-        private readonly IConfiguration _iconfiguration;
+        private readonly IPainelAdmin _painelAdmin;
 
-        public AdmController (InterfaceAgendamento interfaceAgendamento, IConfiguration configuration)
+        public AdmController (IPainelAdmin painelAdmin)
         {
-            _interfaceAgendamento = interfaceAgendamento;
-            _iconfiguration = configuration;
+            _painelAdmin = painelAdmin;
         }
 
 
         [ServiceFilter(typeof(AdminAutorizacaoFilter))]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<AgendamentoModel> agendas = _interfaceAgendamento.BuscarAgendas();
+            var agendasBuscadas = await _painelAdmin.ListarAgendas();
 
             ViewBag.NewNameDuracao = AlterNameEnum.AlterNameDuracao;
             ViewBag.NewNameTipoEvento = AlterNameEnum.AlterNameTipoEvento;
 
-            return View(agendas);
+            return View(agendasBuscadas);
         }
 
         public IActionResult Login()
@@ -46,41 +41,37 @@ namespace Agendamento_de_Eventos.Controllers
 
 
         [HttpPost]
-        public IActionResult Login(LoginAdmViewModel loginAdm)
+        public  IActionResult Login(LoginAdmViewModel loginAdm)
         {
-            var userConfig = _iconfiguration["LoginAdm:Usuario"];
-            var senhaConfig = _iconfiguration["LoginAdm:Senha"];
-
             if (!ModelState.IsValid)
             {
                 TempData["ErrorLoginAdm"] = "Campo usuário e/ou senha não preenchidos. Por favor, preencha os campos.";
                 return View("Login", loginAdm);
             }
 
-            if (loginAdm.usuario == userConfig && loginAdm.senha == senhaConfig)
+            var loginPainelAdm = _painelAdmin.LoginPainelAdm(loginAdm);
+
+            if (!loginPainelAdm.Resultado)
             {
-                HttpContext.Session.SetInt32("AdmLogado", 1);
-                return RedirectToAction("Index");
+                return RedirectToAction("PageMensagemRestrita");
             }
-            return RedirectToAction("PageMensagemRestrita");
+            HttpContext.Session.SetInt32("AdmLogado", 1);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public IActionResult AtualizarStatus(int id, StatusEvento statusEvento)
+        public async Task<IActionResult> AtualizarStatus(int id, StatusEvento statusEvento)
         {
-            AgendamentoModel agendamento = _interfaceAgendamento.BuscarId(id);
+            var agendaBuscada = await _painelAdmin.AtualizarStatus(id, statusEvento);
 
-            if (agendamento == null)
+            if (!agendaBuscada.Resultado)
             {
                 TempData["AgendaNull"] = "Agendamento não Encontrado!";
                 return RedirectToAction("Index");
             }
-
-            agendamento.Status = statusEvento;
-            _interfaceAgendamento.Atualizar(agendamento);
-
             TempData["SucessAgendaStatus"] = "Status do evento alterado com sucesso!!";
             return RedirectToAction("Index");
+
         }
     }
 }

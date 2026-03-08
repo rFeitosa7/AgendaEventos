@@ -1,5 +1,6 @@
 ﻿using Agendamento_de_Eventos.Data;
 using Agendamento_de_Eventos.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Agendamento_de_Eventos.Repositorio
 {
@@ -12,35 +13,41 @@ namespace Agendamento_de_Eventos.Repositorio
         }
 
 
-        public AgendamentoModel BuscarId(int Id)
+        public async Task<AgendamentoModel>  BuscarId(int Id)
         {
-            return _Bancocontext.Agendamento.FirstOrDefault(x => x.Id == Id);
+            return await _Bancocontext.Agendamento
+                .FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public List<AgendamentoModel> BuscarAgendas()
+        public async Task<List<AgendamentoModel>> BuscarAgendas()
         {
-            return _Bancocontext.Agendamento.ToList();
+            return await _Bancocontext.Agendamento.ToListAsync();
+        }
+
+        public async Task<AgendamentoModel> BuscarAgendaCheia(DateTime dataCheia)
+        {
+            return await _Bancocontext.Agendamento.
+                FirstOrDefaultAsync(x => x.DataEvento.Date == dataCheia.Date);
         }
 
 
-
-        public AgendamentoModel AddBanco(AgendamentoModel Addmodel)
+        public async Task<AgendamentoModel> AddBanco(AgendamentoModel Addmodel)
         {
-            _Bancocontext.Agendamento.Add(Addmodel);
-            _Bancocontext.SaveChanges();
+            await _Bancocontext.Agendamento.AddAsync(Addmodel);
+            await _Bancocontext.SaveChangesAsync();
 
             return (Addmodel);
         }
 
-        public AgendamentoModel Atualizar(AgendamentoModel updateModel)
+        public async Task<AgendamentoModel>  Atualizar(AgendamentoModel updateModel)
         {
-            AgendamentoModel agendamento = BuscarId(updateModel.Id);
+            AgendamentoModel agendamento = await BuscarId(updateModel.Id);
 
             if (agendamento == null) throw new Exception("Ocorreu um erro ao atualizar Status do Evento.");
 
             agendamento.Status = updateModel.Status;
 
-            _Bancocontext.SaveChanges();
+            await _Bancocontext.SaveChangesAsync();
 
             return agendamento;
 

@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using Agendamento_de_Eventos.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agendamento_de_Eventos.Controllers

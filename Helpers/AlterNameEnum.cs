@@ -9,8 +9,11 @@ namespace Agendamento_de_Eventos.Helpers
             {DuracaoEvento.UmaHora, "1 Hora"},
             {DuracaoEvento.DuasHora, "2 Horas"},
             {DuracaoEvento.TresHora, "3 Horas"},
-            {DuracaoEvento.QuatroHora, "4 Horas"}
+            {DuracaoEvento.QuatroHora, "4 Horas"},
+            {DuracaoEvento.CasamentoVozeViolao, "Cerimônia Casamento (Voz e Violão)"},
+            {DuracaoEvento.CasamentoGrupo, "Cerimônia Casamento (L'Acordes)"}
         };
+
         public static readonly Dictionary<TipoEvento, string> AlterNameTipoEvento = new()
         {
             {TipoEvento.Aniversario, "Aniversário"},

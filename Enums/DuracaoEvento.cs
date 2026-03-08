@@ -6,5 +6,7 @@
         DuasHora = 2,
         TresHora = 3,
         QuatroHora = 4,
+        CasamentoVozeViolao = 5,
+        CasamentoGrupo = 6,
     }
 }

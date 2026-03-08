@@ -1,6 +1,8 @@
 using Agendamento_de_Eventos.Data;
 using Agendamento_de_Eventos.Filters;
 using Agendamento_de_Eventos.Repositorio;
+using Agendamento_de_Eventos.Service;
+using Agendamento_de_Eventos.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,8 @@ builder.Services.AddDbContext<BancoContext>(options =>
 
 builder.Services.AddScoped<InterfaceAgendamento, RepositorioAgendamento>();
 builder.Services.AddScoped<AdminAutorizacaoFilter>();
+builder.Services.AddScoped<IagendamentoService, AgendamentoService>();
+builder.Services.AddScoped<IPainelAdmin, PainelAdminService>();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
